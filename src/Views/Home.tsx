@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { Producto } from '../Producto';
 import { Producto as ProductoComponent } from '../components/Producto';
 import GlobalStyle from '../styles/global';
-import styled from 'styled-components';
 import { Header } from '../components/Header';
+import { Container } from '../components/Container';
 
-function App() {
+function Home() {
   const [products, setProducts] = useState<Producto[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -39,6 +39,7 @@ function App() {
             key={product.id}
             name={product.name}
             imgUrl={product.imgUrl}
+            id={product.id}
           />
         ))}
       </Container>
@@ -46,11 +47,4 @@ function App() {
   );
 }
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 20px;
-`;
-
-export default App;
+export default Home;
