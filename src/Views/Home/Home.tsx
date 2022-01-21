@@ -4,9 +4,14 @@ import { Producto } from '../../Producto';
 
 export const Home: React.FC = () => {
   const [products, setProducts] = useState([]);
+  const [errors, setErrors] = useState('');
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    getProducts()
+      .then(setProducts)
+      .catch(() => {
+        return setErrors('ha habido un error');
+      });
   }, []);
 
   const getProducts = async () => {
@@ -16,14 +21,22 @@ export const Home: React.FC = () => {
     const data = await response.json();
     return data;
   };
+
+  if (errors) {
+    return <>{errors}</>;
+  }
+
   return (
     <>
       <Header />
       {products.map((product: Producto) => (
-        <li key={product.id}>
-          {product.name}
-          {product.price}
-        </li>
+        <div key={product.id}>
+          <img src={product.imgUrl} alt={`Imagen de una ${product.name}`} />
+          <li>
+            {product.name}
+            {product.price}
+          </li>
+        </div>
       ))}
     </>
   );
