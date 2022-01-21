@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Header } from '../../components/Header';
 import { Producto } from '../../Producto';
 
 export const Home: React.FC = () => {
@@ -17,7 +18,7 @@ export const Home: React.FC = () => {
   };
   return (
     <>
-      <h1>Dulces pétalos</h1>
+      <Header />
       {products.map((product: Producto) => (
         <li key={product.id}>{product.name}</li>
       ))}

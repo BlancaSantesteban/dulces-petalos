@@ -1,10 +1,5 @@
-import styled from 'styled-components';
+import React from 'react';
 
-const StyledHeader = styled.h1`
-  font-size: 32px;
-  font-weight: bold;
-`;
-
-export function Header(title: string) {
-  return <StyledHeader>{title}</StyledHeader>;
-}
+export const Header: React.FC = () => {
+  return <h1>Dulces pétalos</h1>;
+};
