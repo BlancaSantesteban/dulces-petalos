@@ -17,6 +17,7 @@ export const Home: React.FC = () => {
   };
   return (
     <>
+      <h1>Dulces pétalos</h1>
       {products.map((product: Producto) => (
         <li key={product.id}>{product.name}</li>
       ))}
