@@ -15,6 +15,12 @@ describe('Home de la aplicación', () => {
 
     expect(await screen.findByText(/dulces pétalos/i)).toBeInTheDocument();
   });
+
+  it('muestra el precio de una flor', async () => {
+    render(<Home />);
+
+    expect(await screen.findByText(/4.95/i)).toBeInTheDocument();
+  });
   it('handlers server error', async () => {
     server.use(
       rest.get('/api/products', (req, res, ctx) => {

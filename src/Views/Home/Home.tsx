@@ -20,7 +20,10 @@ export const Home: React.FC = () => {
     <>
       <Header />
       {products.map((product: Producto) => (
-        <li key={product.id}>{product.name}</li>
+        <li key={product.id}>
+          {product.name}
+          {product.price}
+        </li>
       ))}
     </>
   );
