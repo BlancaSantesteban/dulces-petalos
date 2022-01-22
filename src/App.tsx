@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home } from './Views/Home/Home';
+import { Home } from './Views/Home';
 
 function App() {
   return <Home />;

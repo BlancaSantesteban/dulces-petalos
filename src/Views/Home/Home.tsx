@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Container } from '../../components/Container';
 import { Header } from '../../components/Header';
+import { Search } from '../../components/Search';
 import { Producto } from '../../Producto';
 
 export const Home: React.FC = () => {
@@ -28,16 +30,25 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <Header />
-      {products.map((product: Producto) => (
-        <div key={product.id}>
-          <img src={product.imgUrl} alt={`Imagen de una ${product.name}`} />
-          <li>
-            {product.name}
-            {product.price}
-          </li>
+      <Container>
+        <Header />
+      </Container>
+
+      <Search />
+      <Container>
+        <div>
+          {products.map((product: Producto) => (
+            <div key={product.id}>
+              <img src={product.imgUrl} alt={`Imagen de una ${product.name}`} />
+              <li>
+                {product.name}
+                {product.binomialName}
+                {product.price}
+              </li>
+            </div>
+          ))}
         </div>
-      ))}
+      </Container>
     </>
   );
 };
