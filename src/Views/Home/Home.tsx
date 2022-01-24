@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from '../../components/Container';
 import { Header } from '../../components/Header';
+import { Item } from '../../components/Item';
+import { Row } from '../../components/Row';
 import { Search } from '../../components/Search';
 import { Producto } from '../../Producto';
 
@@ -36,18 +38,18 @@ export const Home: React.FC = () => {
 
       <Search />
       <Container>
-        <div>
+        <Row>
           {products.map((product: Producto) => (
-            <div key={product.id}>
-              <img src={product.imgUrl} alt={`Imagen de una ${product.name}`} />
-              <li>
-                {product.name}
-                {product.binomialName}
-                {product.price}
-              </li>
-            </div>
+            <Item
+              key={product.id}
+              name={product.name}
+              imgUrl={product.imgUrl}
+              id={product.id}
+              binomialName={product.binomialName}
+              price={product.price}
+            />
           ))}
-        </div>
+        </Row>
       </Container>
     </>
   );
