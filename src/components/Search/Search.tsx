@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 
-export const Search: React.FC = () => {
-  return (
-    <SearchStyled>
-      <SearchInput
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-        aria-describedby="search-addon"
-      />
-      <SearchButton type="button">search</SearchButton>
-    </SearchStyled>
-  );
-};
+interface Props {
+  query: string;
+}
+
+export const Search: React.FC<Props> = (query, onChange) => (
+  <SearchStyled>
+    <SearchInput
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      aria-describedby="search-addon"
+      onChange={onChange}
+    />
+    <SearchButton type="button">search</SearchButton>
+  </SearchStyled>
+);
 
 const SearchStyled = styled.div`
   display: flex;

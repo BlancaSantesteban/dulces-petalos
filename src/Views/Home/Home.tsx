@@ -1,4 +1,7 @@
+import { getValue } from '@testing-library/user-event/dist/utils';
 import React, { useEffect, useState } from 'react';
+import { BallTriangle } from 'react-loader-spinner';
+import styled from 'styled-components';
 import { Container } from '../../components/Container';
 import { Header } from '../../components/Header';
 import { Item } from '../../components/Item';
@@ -9,6 +12,8 @@ import { Producto } from '../../Producto';
 export const Home: React.FC = () => {
   const [products, setProducts] = useState([]);
   const [errors, setErrors] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     getProducts()
@@ -23,11 +28,19 @@ export const Home: React.FC = () => {
       'https://dulces-petalos.herokuapp.com/api/product',
     );
     const data = await response.json();
+    setIsLoading(false);
     return data;
   };
 
   if (errors) {
     return <>{errors}</>;
+  }
+  if (isLoading) {
+    return (
+      <IsLoadingContainer>
+        <BallTriangle color="#00BFFF" height={600} width={600} />
+      </IsLoadingContainer>
+    );
   }
 
   return (
@@ -35,22 +48,40 @@ export const Home: React.FC = () => {
       <Container>
         <Header />
       </Container>
-
-      <Search />
+      <input
+        type="search"
+        placeholder="Search"
+        onChange={event => {
+          setSearchTerm(event.target.value);
+        }}
+      />
       <Container>
         <Row>
-          {products.map((product: Producto) => (
-            <Item
-              key={product.id}
-              name={product.name}
-              imgUrl={product.imgUrl}
-              id={product.id}
-              binomialName={product.binomialName}
-              price={product.price}
-            />
-          ))}
+          {products
+            .filter((product: Producto) => {
+              if (
+                product.name.toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                return product;
+              }
+            })
+            .map((product: Producto) => (
+              <Item
+                key={product.id}
+                name={product.name}
+                imgUrl={product.imgUrl}
+                id={product.id}
+                binomialName={product.binomialName}
+                price={product.price}
+              />
+            ))}
         </Row>
       </Container>
     </>
   );
 };
+const IsLoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
