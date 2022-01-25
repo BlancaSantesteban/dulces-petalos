@@ -36,12 +36,18 @@ export const Item: React.FC<Props> = ({
 };
 const ItemElement = styled.div`
   position: relative;
-  flex-basis: 24%;
-  margin-bottom: 40px;
+  flex-basis: 49%;
+  margin-bottom: 1%;
   display: inline-block;
   overflow: hidden;
   width: 100%;
   min-height: 300px;
+  @media (min-width: 768px) {
+    flex-basis: 32%;
+  }
+  @media (min-width: 1024px) {
+    flex-basis: 24%;
+  }
 `;
 
 const ItemImage = styled.img`
@@ -59,13 +65,28 @@ const ItemText = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  h1 {
+    font-size: 25px;
+
+    @media (min-width: 1220px) {
+      font-size: 32px;
+    }
+  }
   div {
     position: absolute;
     bottom: 20px;
     display: flex;
     align-self: flex-end;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
-    font-size: 25px;
+    font-size: 18px;
+
+    @media (min-width: 992px) {
+      font-size: 20px;
+    }
+    @media (min-width: 1400px) {
+      font-size: 25px;
+    }
   }
 `;

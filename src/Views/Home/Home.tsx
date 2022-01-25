@@ -1,10 +1,9 @@
-import { getValue } from '@testing-library/user-event/dist/utils';
 import React, { useEffect, useState } from 'react';
-import { BallTriangle } from 'react-loader-spinner';
 import styled from 'styled-components';
 import { Container } from '../../components/Container';
 import { Header } from '../../components/Header';
 import { Item } from '../../components/Item';
+import { Loader } from '../../components/Loader';
 import { Row } from '../../components/Row';
 import { Search } from '../../components/Search';
 import { Producto } from '../../Producto';
@@ -13,7 +12,7 @@ export const Home: React.FC = () => {
   const [products, setProducts] = useState([]);
   const [errors, setErrors] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchItem] = useState('');
 
   useEffect(() => {
     getProducts()
@@ -36,11 +35,7 @@ export const Home: React.FC = () => {
     return <>{errors}</>;
   }
   if (isLoading) {
-    return (
-      <IsLoadingContainer>
-        <BallTriangle color="#00BFFF" height={600} width={600} />
-      </IsLoadingContainer>
-    );
+    return <Loader />;
   }
 
   return (
@@ -48,13 +43,14 @@ export const Home: React.FC = () => {
       <Container>
         <Header />
       </Container>
-      <input
-        type="search"
-        placeholder="Search"
-        onChange={event => {
-          setSearchTerm(event.target.value);
-        }}
-      />
+      <SearchStyled>
+        <SearchInput
+          type="search"
+          placeholder="Search"
+          onChange={event => setSearchItem(event.target.value)}
+        />
+      </SearchStyled>
+
       <Container>
         <Row>
           {products
@@ -80,8 +76,15 @@ export const Home: React.FC = () => {
     </>
   );
 };
-const IsLoadingContainer = styled.div`
+
+const SearchStyled = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  margin-right: 24px;
+`;
+const SearchInput = styled.input`
+  font-size: 25px;
+  padding: 10px;
+  border: 1px solid black;
+  outline: none;
 `;
