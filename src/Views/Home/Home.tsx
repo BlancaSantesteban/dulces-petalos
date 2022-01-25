@@ -60,6 +60,13 @@ export const Home: React.FC = () => {
               ) {
                 return product;
               }
+              if (
+                product.binomialName
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())
+              ) {
+                return product;
+              }
             })
             .map((product: Producto) => (
               <Item
@@ -83,8 +90,14 @@ const SearchStyled = styled.div`
   margin-right: 24px;
 `;
 const SearchInput = styled.input`
-  font-size: 25px;
+  font-size: 18px;
   padding: 10px;
   border: 1px solid black;
   outline: none;
+  @media (min-width: 992px) {
+    font-size: 20px;
+  }
+  @media (min-width: 1400px) {
+    font-size: 25px;
+  }
 `;
