@@ -1,8 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import React from 'react';
 import { Detail } from './Detail';
 
 describe('Detail de la aplicación', () => {
+  it('al cargar muestra loader', async () => {
+    render(<Detail />);
+
+    expect(screen.getByTestId('ball-triangle-svg')).toBeInTheDocument();
+    await waitForElementToBeRemoved(screen.queryByTestId('ball-triangle-svg'));
+  });
   it('muestra el nombre de la flor', async () => {
     render(<Detail />);
 
