@@ -1,14 +1,26 @@
-import { render, screen } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import React from 'react';
 import { server } from '../../mocks/server';
 import { Home } from './Home';
 
 describe('Home de la aplicación', () => {
+  it('al cargar muestra loader', async () => {
+    render(<Home />);
+
+    expect(screen.getByTestId('ball-triangle-svg')).toBeInTheDocument();
+    await waitForElementToBeRemoved(screen.queryByTestId('ball-triangle-svg'));
+  });
+
   it('muestra el nombre de una flor', async () => {
     render(<Home />);
 
-    expect(await screen.findByText(/petunia/i)).toBeInTheDocument();
+    expect(await screen.findByText(/girasol/i)).toBeInTheDocument();
   });
 
   it('muestra el precio de una flor', async () => {
@@ -43,5 +55,13 @@ describe('Home de la aplicación', () => {
     render(<Home />);
 
     expect(await screen.findByText(/ha habido un error/i)).toBeInTheDocument();
+  });
+
+  it('filtra por nombre', async () => {
+    render(<Home />);
+    userEvent.type(await screen.findByRole('searchbox'), 'girasol');
+
+    expect(screen.queryByText(/elecho/i)).not.toBeInTheDocument();
+    expect(await screen.findByText(/girasol/i)).toBeInTheDocument();
   });
 });

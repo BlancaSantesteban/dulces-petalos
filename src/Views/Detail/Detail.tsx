@@ -1,3 +1,3 @@
 export const Detail: React.FC = () => {
-  return <>'Petunia'</>;
+  return <>Girasol, Heliantus annuus</>;
 };
