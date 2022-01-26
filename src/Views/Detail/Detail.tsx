@@ -47,7 +47,7 @@ export const Detail: React.FC = () => {
         <DetailDescription>
           <h1>{detail?.name}</h1>
           <h2>{detail?.binomialName}</h2>
-          <span>Precio: {detail?.price}€</span>
+          <span>Precio: {detail?.price.toFixed(2)}€</span>
           <span>Waterings per week: {detail?.wateringsPerWeek}</span>
           <span>Fertilizante: {detail?.fertilizerType}</span>
           <span>Height: {detail?.heightInCm}</span>

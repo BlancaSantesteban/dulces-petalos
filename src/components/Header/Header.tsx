@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 export const Header: React.FC = () => {
   return (
-    <HeaderContainer>
+    <HeaderContainer to={'/'}>
       <Logo src={require('./logo.png')} alt="Dulces pétalos" />
       <h1>Dulces pétalos</h1>
     </HeaderContainer>
@@ -12,9 +13,11 @@ export const Header: React.FC = () => {
 const Logo = styled.img`
   width: 80px;
 `;
-const HeaderContainer = styled.div`
+const HeaderContainer = styled(Link)`
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: black;
   h1 {
     margin-left: 15px;
     font-size: 40px;

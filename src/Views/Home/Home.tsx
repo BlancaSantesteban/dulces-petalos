@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { Container } from '../../components/Container';
-import { Header } from '../../components/Header';
 import { Item } from '../../components/Item';
 import { Loader } from '../../components/Loader';
 import { Row } from '../../components/Row';

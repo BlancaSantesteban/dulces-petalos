@@ -19,6 +19,9 @@ const BreadcrumbWrapper = styled(Link)`
   align-items: center;
   span {
     display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
     margin-left: 10px;
+    color: black;
   }
 `;
