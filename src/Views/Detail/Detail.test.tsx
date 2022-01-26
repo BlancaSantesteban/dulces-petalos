@@ -38,4 +38,9 @@ describe('Detail de la aplicación', () => {
 
     expect(await screen.findByText(/phosphorus/i)).toBeInTheDocument();
   });
+  it('muestra la altura de la flor', async () => {
+    render(<Detail />);
+
+    expect(await screen.findByText(/70/i)).toBeInTheDocument();
+  });
 });
