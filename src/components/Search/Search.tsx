@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
-export const Search: React.FC = onChange => (
-  <SearchStyled>
-    <SearchInput type="search" placeholder="Search" />
-  </SearchStyled>
+interface Props {
+  onSearch: (searchTerm: string) => void;
+}
+
+export const Search: React.FC<Props> = ({ onSearch }) => (
+  <SearchInput
+    type="search"
+    placeholder="Search"
+    onChange={event => onSearch(event.target.value)}
+  />
 );
 
-const SearchStyled = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 24px;
-`;
 const SearchInput = styled.input`
   font-size: 18px;
   padding: 10px;

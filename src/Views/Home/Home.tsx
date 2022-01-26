@@ -12,7 +12,7 @@ export const Home: React.FC = () => {
   const [products, setProducts] = useState([]);
   const [errors, setErrors] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchItem] = useState('');
+  const [searchItem, setSearchItem] = useState('');
 
   useEffect(() => {
     getProducts()
@@ -43,30 +43,21 @@ export const Home: React.FC = () => {
       <Container>
         <Header />
       </Container>
-      <SearchStyled>
-        <SearchInput
-          type="search"
-          placeholder="Search"
-          onChange={event => setSearchItem(event.target.value)}
-        />
-      </SearchStyled>
+
+      <SearchWrapper>
+        <Search onSearch={setSearchItem} />
+      </SearchWrapper>
 
       <Container>
         <Row>
           {products
             .filter((product: Producto) => {
-              if (
-                product.name.toLowerCase().includes(searchTerm.toLowerCase())
-              ) {
-                return product;
-              }
-              if (
+              return (
+                product.name.toLowerCase().includes(searchItem.toLowerCase()) ||
                 product.binomialName
                   .toLowerCase()
-                  .includes(searchTerm.toLowerCase())
-              ) {
-                return product;
-              }
+                  .includes(searchItem.toLowerCase())
+              );
             })
             .map((product: Producto) => (
               <Item
@@ -84,20 +75,8 @@ export const Home: React.FC = () => {
   );
 };
 
-const SearchStyled = styled.div`
+const SearchWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-right: 24px;
-`;
-const SearchInput = styled.input`
-  font-size: 18px;
-  padding: 10px;
-  border: 1px solid black;
-  outline: none;
-  @media (min-width: 992px) {
-    font-size: 20px;
-  }
-  @media (min-width: 1400px) {
-    font-size: 25px;
-  }
 `;

@@ -26,7 +26,7 @@ export const Item: React.FC<Props> = ({
         <h1>{name}</h1>
         <div>
           <span>{binomialName}</span>
-          <i>{price}€</i>
+          <i>{price.toFixed(2)}€</i>
         </div>
       </ItemText>
     </ItemElement>
