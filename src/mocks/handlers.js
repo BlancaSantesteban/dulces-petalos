@@ -98,4 +98,25 @@ export const handlers = [
       );
     },
   ),
+  rest.get(
+    'https://dulces-petalos.herokuapp.com/api/product/:id',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json([
+          {
+            id: 'qSyO-2wbasdfdrb2waew',
+            name: 'Girasol',
+            binomialName: 'Heliantus annuus',
+            price: 5.25,
+            imgUrl:
+              'https://dulces-petalos.herokuapp.com/images/helianthusAnnuus.jpeg',
+            wateringsPerWeek: 1,
+            fertilizerType: 'phosphorus',
+            heightInCm: 70,
+          },
+        ]),
+      );
+    },
+  ),
 ];

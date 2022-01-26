@@ -1,5 +1,6 @@
 //import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface Props {
@@ -19,7 +20,6 @@ export const Item: React.FC<Props> = ({
 }) => {
   return (
     //<Link to={`/${id}`}>
-
     <ItemElement key={id}>
       <ItemImage src={imgUrl} alt={`Imagen de una ${name}`} />
       <ItemText>
@@ -30,7 +30,6 @@ export const Item: React.FC<Props> = ({
         </div>
       </ItemText>
     </ItemElement>
-
     //</Link>
   );
 };
