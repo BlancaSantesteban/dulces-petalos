@@ -6,6 +6,7 @@ import { Item } from '../../components/Item';
 import { Loader } from '../../components/Loader';
 import { Row } from '../../components/Row';
 import { Search } from '../../components/Search';
+import { SideWrapper } from '../../components/SideWrapper/SideWrapper';
 import { Producto } from '../../Producto';
 
 export const Home: React.FC = () => {
@@ -40,13 +41,9 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <Container>
-        <Header />
-      </Container>
-
-      <SearchWrapper>
+      <SideWrapper>
         <Search onSearch={setSearchItem} />
-      </SearchWrapper>
+      </SideWrapper>
 
       <Container>
         <Row>
@@ -74,9 +71,3 @@ export const Home: React.FC = () => {
     </>
   );
 };
-
-const SearchWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 24px;
-`;

@@ -4,4 +4,7 @@ export interface Producto {
   price: number;
   binomialName: string;
   imgUrl: string;
+  wateringsPerWeek: number;
+  fertilizerType: string;
+  heightInCm: number;
 }

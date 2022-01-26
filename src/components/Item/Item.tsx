@@ -19,8 +19,7 @@ export const Item: React.FC<Props> = ({
   price,
 }) => {
   return (
-    //<Link to={`/${id}`}>
-    <ItemElement key={id}>
+    <StyledLink to={`/${id}`} key={id}>
       <ItemImage src={imgUrl} alt={`Imagen de una ${name}`} />
       <ItemText>
         <h1>{name}</h1>
@@ -29,11 +28,10 @@ export const Item: React.FC<Props> = ({
           <i>{price.toFixed(2)}€</i>
         </div>
       </ItemText>
-    </ItemElement>
-    //</Link>
+    </StyledLink>
   );
 };
-const ItemElement = styled.div`
+const StyledLink = styled(Link)`
   position: relative;
   flex-basis: 49%;
   margin-bottom: 1%;
@@ -41,11 +39,18 @@ const ItemElement = styled.div`
   overflow: hidden;
   width: 100%;
   min-height: 300px;
+  text-decoration: none;
+
   @media (min-width: 768px) {
     flex-basis: 32%;
   }
   @media (min-width: 1024px) {
     flex-basis: 24%;
+  }
+  &:hover {
+    img {
+      filter: brightness(0.9);
+    }
   }
 `;
 
@@ -56,7 +61,8 @@ const ItemImage = styled.img`
   height: 100%;
   z-index: -1;
   object-fit: cover;
-  filter: brightness(0.7);
+  filter: brightness(0.6);
+  transition: 0.5s ease all;
 `;
 const ItemText = styled.div`
   color: white;
