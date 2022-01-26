@@ -23,4 +23,9 @@ describe('Detail de la aplicación', () => {
 
     expect(await screen.findByText(/Heliantus annuus/i)).toBeInTheDocument();
   });
+  it('muestra el precio de la flor', async () => {
+    render(<Detail />);
+
+    expect(await screen.findByText(/5.25/i)).toBeInTheDocument();
+  });
 });
