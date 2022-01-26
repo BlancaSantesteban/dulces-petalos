@@ -28,4 +28,14 @@ describe('Detail de la aplicación', () => {
 
     expect(await screen.findByText(/5.25/i)).toBeInTheDocument();
   });
+  it('muestra el numero de riegos de la flor', async () => {
+    render(<Detail />);
+
+    expect(await screen.findByText(/1/i)).toBeInTheDocument();
+  });
+  it('muestra el fertilizante recomendado de la flor', async () => {
+    render(<Detail />);
+
+    expect(await screen.findByText(/phosphorus/i)).toBeInTheDocument();
+  });
 });

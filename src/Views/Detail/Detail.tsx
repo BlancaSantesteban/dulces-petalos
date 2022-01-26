@@ -18,5 +18,5 @@ export const Detail: React.FC = () => {
   if (isLoading) {
     return <Loader />;
   }
-  return <>Girasol, Heliantus annuus, 5,25</>;
+  return <>Girasol, Heliantus annuus, 5,25, 1,phosphorus</>;
 };
