@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Producto } from '../../Producto';
 import { useParams } from 'react-router-dom';
-import { Loader } from '../../components/Loader';
-import { Container } from '../../components/Container';
-import { Header } from '../../components/Header';
-import { SideWrapper } from '../../components/SideWrapper/SideWrapper';
+import { Loader } from '../../Components/Loader';
+import { SideWrapper } from '../../Components/SideWrapper/SideWrapper';
 import styled from 'styled-components';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Breadcrumbs } from '../../Components/Breadcrumbs';
 
 export const Detail: React.FC = () => {
   const { id } = useParams();

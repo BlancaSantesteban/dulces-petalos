@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from '../../components/Container';
-import { Item } from '../../components/Item';
-import { Loader } from '../../components/Loader';
-import { Row } from '../../components/Row';
-import { Search } from '../../components/Search';
-import { SideWrapper } from '../../components/SideWrapper/SideWrapper';
+import { Container } from '../../Components/Container';
+import { Item } from '../../Components/Item';
+import { Loader } from '../../Components/Loader';
+import { Row } from '../../Components/Row';
+import { Search } from '../../Components/Search';
+import { SideWrapper } from '../../Components/SideWrapper/SideWrapper';
 import { Producto } from '../../Producto';
 
 export const Home: React.FC = () => {

@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from './Views/Home';
 import { Detail } from './Views/Detail';
-import { Container } from './components/Container';
-import { Header } from './components/Header';
+import { Container } from './Components/Container';
+import { Header } from './Components/Header';
 
 export const App: React.FC = () => {
   return (
